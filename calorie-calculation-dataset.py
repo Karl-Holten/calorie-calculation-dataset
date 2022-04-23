@@ -38,7 +38,7 @@ This dataset consists of recipes OCRed and taken from the Internet Archive Cookb
 NER tags are given to first instances of ingredients, quantities and units in each recipe for the purposes of calculating calorie information.
 """
 
-_HOMEPAGE = "https://github.com/Karl-Holten/calorie-calculation-dataset"
+_HOMEPAGE = "https://github.com/Karl-Holten/calorie-calculation-dataset/"
 
 _LICENSE = ""
 
@@ -46,8 +46,9 @@ _LICENSE = ""
 # TODO: Register URL with huggingface.
 # The HuggingFace Datasets library doesn't host the datasets but only points to the original files.
 # This can be an arbitrary nested dict/list of URLs (see below in `_split_generators` method)
+_URL= "https://github.com/Karl-Holten/calorie-calculation-dataset/"
 _URLS = {
-    "seperateIngredients": "https://raw.githubusercontent.com/Karl-Holten/calorie-calculation-dataset/main/data.zip"
+    "seperateIngredients": _URL + "fullset.csv"
 }
 
 
@@ -111,13 +112,13 @@ NER tags are given to first instances of ingredients, quantities and units in ea
                     "split": "test"
                 },
             ),
-##            datasets.SplitGenerator(
-##                name=datasets.Split.VALIDATION,
-##                # These kwargs will be passed to _generate_examples
-##                gen_kwargs={
-##                    "filepath": os.path.join(data_dir, "dev.csv"),
-##                    "split": "dev",
-##                },
+            datasets.SplitGenerator(
+                name=datasets.Split.VALIDATION,
+                # These kwargs will be passed to _generate_examples
+                gen_kwargs={
+                    "filepath": os.path.join(data_dir, "dev.csv"),
+                    "split": "dev",
+                },
             ),
         ]
 
